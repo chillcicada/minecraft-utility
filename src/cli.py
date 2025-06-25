@@ -1,6 +1,6 @@
 import argparse
 
-from core.calculate_uuid import calculate_genuine_uuid, calculate_offline_uuid
+from core.calculate_uuid import calculate_offline_uuid
 from core.transfer_palyerdata import backup_file, list_available_players, transfer_playerdata
 
 
@@ -27,9 +27,10 @@ def main():
     if args.command == 'uuid':
         if args.offline:
             uuid = calculate_offline_uuid(args.username)
+            print(f'Calculated UUID for {args.username}: {uuid}')
         else:
-            uuid = calculate_genuine_uuid(args.username)
-        print(f'Calculated UUID for {args.username}: {uuid}')
+            # uuid = calculate_genuine_uuid(args.username)
+            print('Genuine UUID calculation is not implemented yet.')
 
     elif args.command == 'save':
         players = list_available_players(args.path)
